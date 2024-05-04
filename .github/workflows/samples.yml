@@ -101,8 +101,9 @@ jobs:
           restore-keys: brew-actions-setup-docker-
       - name: 'SETUP MacOS: install docker'
         run: |
-          brew install docker docker-compose colima
+          brew install docker colima
           colima start
+          sudo ln -sf $HOME/.colima/default/docker.sock /var/run/docker.sock
         if: runner.os == 'macOS' && steps.compare.outputs.equals != 'true'
         timeout-minutes: 10
       - run: ls ~/Library/Caches/Homebrew/

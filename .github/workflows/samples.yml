@@ -104,6 +104,8 @@ jobs:
           brew install docker colima docker-compose
           colima start
           sudo ln -sf $HOME/.colima/default/docker.sock /var/run/docker.sock
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn $HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
         if: runner.os == 'macOS' && steps.compare.outputs.equals != 'true'
         timeout-minutes: 10
       - run: ls ~/Library/Caches/Homebrew/

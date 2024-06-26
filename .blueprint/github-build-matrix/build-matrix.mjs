@@ -1,4 +1,3 @@
-import { readdir } from 'fs/promises';
 import { RECOMMENDED_JAVA_VERSION, RECOMMENDED_NODE_VERSION } from 'generator-jhipster';
 import { fromMatrix } from 'generator-jhipster/testing';
 
@@ -18,11 +17,13 @@ export const buildMatrix = ({ samples, samplesFolder }) => {
         ...defaultMatrix,
         'sample-name': samples.filter(sample => !sample.includes('disabled')),
       }),
-    ).map(value => ({
-      ...value,
-      ...(value.os.startsWith('windows-')
+    ).map(sample => ({
+      ...sample,
+      ...(sample.os.startsWith('windows-')
         ? { 'default-environment': 'dev', e2e: 'false' }
         : { 'default-environment': 'prod', e2e: 'true' }),
+      'job-name': sample['sample-name'],
+      'extra-args': `--samples-folder ${samplesFolder}`,
     })),
   };
 };

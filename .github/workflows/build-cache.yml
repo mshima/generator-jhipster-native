@@ -10,7 +10,7 @@ jobs:
       run:
         working-directory: ${{ github.workspace }}/app
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           path: generator-jhipster-native
           fetch-depth: 1

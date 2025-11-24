@@ -23,7 +23,7 @@ jobs:
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -49,7 +49,7 @@ jobs:
       # Install all tools and check configuration
       #----------------------------------------------------------------------
       - name: 'SETUP: checkout generator-jhipster-native'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: generator-jhipster-native
           fetch-depth: 2

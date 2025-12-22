@@ -93,7 +93,7 @@ jobs:
           cat .npmrc
 
       - name: 'SETUP MacOS: load Homebrew cache'
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         if: matrix.os == 'macos-13' && steps.compare.outputs.equals != 'true'
         with:
           path: |
